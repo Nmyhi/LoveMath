@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
-    runGame("addition");
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    })
+    
 });
 
 /**
@@ -24,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 
 function runGame(gameType) {
+
+    document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
     //Cretes two numbers between 1 and 25
     let num1 = Math.floor(Math.random() *25) +1;
     let num2 = Math.floor(Math.random() *25) +1;
@@ -77,7 +85,7 @@ function calculateCorrectAnswer(){
 
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
-    } else if (operator === "X") {
+    } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
     } else if (operator === "-") {
         return [operand1 - operand2, "subtract"];
@@ -134,7 +142,7 @@ function displayMultiplyQuestion(operand1, operand2) {
 
     document.getElementById("operand1").textContent = operand1;
     document.getElementById("operand2").textContent = operand2;
-    document.getElementById("operator").textContent = "X";  
+    document.getElementById("operator").textContent = "x";  
 
 }
 
